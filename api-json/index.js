@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const fs = require('fs');
+// const fs = require('fs');
+
+const utils = require('./utils.js'); //Funções JS
 
 const app = express();
 app.use(bodyParser.json())
@@ -10,14 +12,8 @@ app.post('/save-file', (req, res) => {
   let titulo = req.body.titulo;
   let texto = req.body.texto;
 
-  fs.writeFile(titulo, texto, error => {
-    if (error) {
-      console.log('Deu erro!');
-    } else {
-      console.log('Deu certo!');
-      res.send(req.body);
-    }
-  });
+  utils.gravarArquivo(titulo, texto);
+  res.send(req.body);
 
 });
 

@@ -24,5 +24,4 @@ percorrerCLientes(clientes);
 workbook.xlsx.writeFile('clientes.xlsx')
     .then(function() {
         console.log('Done');
-        
     });
